@@ -4,14 +4,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * Article Entity
  *
  * @property int $id
- * @property string $username
- * @property string $password
- * @property \Cake\I18n\FrozenTime $last_login
+ * @property string $title
+ * @property string $content
+ * @property \Cake\I18n\FrozenTime $createAt
+ * @property \Cake\I18n\FrozenTime $updateAt
+ * @property int $author
+ * @property int $category
  */
-class User extends Entity
+class Article extends Entity
 {
 
     /**
@@ -24,17 +27,11 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        'username' => true,
-        'password' => true,
-        'last_login' => true
-    ];
-
-    /**
-     * Fields that are excluded from JSON versions of the entity.
-     *
-     * @var array
-     */
-    protected $_hidden = [
-        'password'
+        'title' => true,
+        'content' => true,
+        'createAt' => true,
+        'updateAt' => true,
+        'author' => true,
+        'category' => true
     ];
 }

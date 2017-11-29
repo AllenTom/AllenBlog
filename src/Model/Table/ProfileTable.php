@@ -7,17 +7,17 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * User Model
+ * Profile Model
  *
- * @method \App\Model\Entity\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Profile get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Profile newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Profile[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Profile|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Profile patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Profile[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Profile findOrCreate($search, callable $callback = null, $options = [])
  */
-class UserTable extends Table
+class ProfileTable extends Table
 {
 
     /**
@@ -30,7 +30,7 @@ class UserTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('user');
+        $this->setTable('profile');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
     }
@@ -49,19 +49,17 @@ class UserTable extends Table
             ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->scalar('username')
-            ->requirePresence('username', 'create')
-            ->notEmpty('username')
-            ->add('username', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->scalar('nickname')
+            ->requirePresence('nickname', 'create')
+            ->notEmpty('nickname');
 
         $validator
-            ->scalar('password')
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->scalar('intro')
+            ->allowEmpty('intro');
 
         $validator
-            ->dateTime('last_login')
-            ->allowEmpty('last_login');
+            ->integer('user')
+            ->allowEmpty('user');
 
         return $validator;
     }
@@ -75,7 +73,6 @@ class UserTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['username']));
         $rules->add($rules->isUnique(['id']));
 
         return $rules;

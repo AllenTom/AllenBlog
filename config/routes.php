@@ -49,18 +49,33 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'index']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/admin', ['controller' => 'Main', 'action' => 'index', 'index']);
+    $routes->connect('/login', ['controller' => 'Login', 'action' => 'index', 'index']);
+    $routes->connect('/sign-up', ['controller' => 'Main', 'action' => 'signUp', 'sign_up']);
+    $routes->connect('/admin/articles', ['controller' => 'Main', 'action' => 'article', 'article']);
+    $routes->connect('/admin/category', ['controller' => 'Main', 'action' => 'category', 'category']);
+    $routes->connect('/admin/profile', ['controller' => 'Main', 'action' => 'profile', 'profile']);
+    $routes->connect('/admin/articles/create', ['controller' => 'Main', 'action' => 'createArticle', 'article_create']);
 
-    $routes->connect('/admin',['controller' => 'Main','action' => 'index', 'index']);
-    $routes->connect('/login',['controller' => 'Main','action' => 'login', 'login']);
-    $routes->connect('/sign-up',['controller' => 'Main','action' => 'signUp', 'sign_up']);
-    $routes->connect('/api/user/add',['controller' => 'ApiUser','action' => 'add', 'add']);
-    $routes->connect('/api/user/login',['controller' => 'ApiUser','action' => 'login', 'add']);
+    $routes->connect('/api/category/add',['controller'=>'Category','action'=>'add']);
+    $routes->connect('/api/article/add',['controller'=>'Article','action'=>'add']);
+    $routes->connect('/api/article',['controller'=>'Article']);
+
+    $routes->connect('/auth',['controller'=>'Auth','action'=>'index']);
+    $routes->connect('/user',['controller'=>'User','action'=>'index']);
+    $routes->connect('/api/profile',['controller'=>'Profile','action'=>'index']);
+    $routes->connect('/', ['controller' => 'Blog', 'action' => 'index', 'index']);
+
+    $routes->connect(
+        '/articles/:id',
+        ['controller' => 'Blog', 'action' => 'articleDetail'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
+
 
     /**
      * Connect catchall routes for all controllers.

@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" href="/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <script src="/js/echarts.min.js"></script>
     <link rel="stylesheet" href="/css/amazeui.min.css"/>
     <link rel="stylesheet" href="/css/amazeui.datatables.min.css"/>
     <link rel="stylesheet" href="/css/app.css">
@@ -20,9 +21,11 @@
 
 </head>
 
-<body data-type="login">
+<body data-type="widgets">
 <script src="/js/theme.js"></script>
 <div class="am-g tpl-g">
+    <!-- 头部 -->
+    <?= $this->element('header_nav'); ?>
     <!-- 风格切换 -->
     <div class="tpl-skiner">
         <div class="tpl-skiner-toggle am-icon-cog">
@@ -37,49 +40,36 @@
             </div>
         </div>
     </div>
-    <div class="tpl-login">
-        <div class="tpl-login-content">
-            <div class="tpl-login-title">注册用户</div>
-            <span class="tpl-login-content-info">
-                  创建一个新的用户
-              </span>
+    <!-- 侧边导航栏 -->
+    <?= $this->element('sidebar'); ?>
 
 
-            <form class="am-form tpl-form-line-form" action="/user/add" method="post">
-                <div class="am-form-group">
-                    <input type="text" class="tpl-form-input" id="user-name" name="username" placeholder="用户名">
-                </div>
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper" style="margin-top: 75px">
 
-                <div class="am-form-group">
-                    <input type="password" class="tpl-form-input" id="user-name" name="password" placeholder="请输入密码">
-                </div>
+        <div class="container-fluid am-cf"
+             style="background-color: white;margin-left: 16px;margin-right: 16px;margin-top: 20px">
+            <form class="am-form" action="/api/profile/add" method="post">
+                <fieldset>
+                    <legend>个性化</legend>
+                    <div class="am-form-group">
+                        <label for="doc-ipt-pwd-1">个人昵称</label>
+                        <input type="text" class="" id="doc-ipt-pwd-1" placeholder="昵称" name="nickname">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="doc-ta-1">个人简介</label>
+                        <textarea class="" rows="5" id="doc-ta-1" name="intro"></textarea>
+                    </div>
 
-                <div class="am-form-group">
-                    <input type="password" class="tpl-form-input" id="user-name" placeholder="再次输入密码">
-                </div>
-
-                <div class="am-form-group tpl-login-remember-me">
-                    <input id="remember-me" type="checkbox">
-                    <label for="remember-me">
-
-                        我已阅读并同意 <a href="javascript:;">《用户注册协议》</a>
-                    </label>
-
-                </div>
-
-
-                <div class="am-form-group">
-
-                    <button type="submit"
-                            class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交
-                    </button>
-
-                </div>
+                    <p><button type="submit" class="am-btn am-btn-default">提交</button></p>
+                </fieldset>
             </form>
         </div>
     </div>
 </div>
 <script src="/js/amazeui.min.js"></script>
+<script src="/js/amazeui.datatables.min.js"></script>
+<script src="/js/dataTables.responsive.min.js"></script>
 <script src="/js/app.js"></script>
 
 </body>

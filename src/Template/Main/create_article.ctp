@@ -20,9 +20,6 @@
     <script src="/js/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
-    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
-
 </head>
 
 <body data-type="widgets">
@@ -69,28 +66,35 @@
                 </div>
                 <div class="am-form-group" style="margin-top: 36px">
                     <label for="doc-ta-1">文本域</label>
-                    <textarea name="editor1" id="editor1" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor.
-            </textarea>
+
+                    <div id="editor" type="text/plain" style="width:1024px;height:500px;"></div>
+
+
                 </div>
-                <button type="submit" class="am-btn am-btn-primary">添加</button>
+                <button type="button" onclick="onArticleSubmit()" class="am-btn am-btn-primary">添加</button>
             </form>
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script><script src="/js/amazeui.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script src="/js/amazeui.min.js"></script>
 <script src="/js/amazeui.datatables.min.js"></script>
 <script src="/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.17.1/axios.js"></script>
 <script src="/js/app.js"></script>
 <script>
-    CKEDITOR.replace('editor1');
-    function onArticleSubmit() {
-        console.log(quill.getContents());
+    let ue = UE.getEditor('editor');
+
+    const onArticleSubmit = () => {
+        console.log(UE.getEditor('editor').getContent());
         axios.post(
             "/api/article/add", {
                 title: $('#input-title').val(),
                 category: $('#select-category').val(),
-                content: quill.getContent()
+                content: UE.getEditor('editor').getContent()
             }
         ).then(res => window.location = '/admin/category')
             .catch(err => console.log(err))

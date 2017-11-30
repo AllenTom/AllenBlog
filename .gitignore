@@ -17,7 +17,7 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
+/webroot/ueditor/*
 # Tool specific files #
 #######################
 *~ # vim

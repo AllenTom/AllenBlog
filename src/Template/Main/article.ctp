@@ -18,7 +18,8 @@
             <td><?= $article->category ?></td>
             <td>
                 <button type="button" class="am-btn am-btn-primary">修改</button>
-                <button type="button" class="am-btn am-btn-danger">删除</button>
+                <button type="button" onclick="deleteArticle(<?= $article->id ?>)" class="am-btn am-btn-danger">删除
+                </button>
             </td>
         </tr>
     <?php endforeach; ?>
@@ -29,12 +30,14 @@
 </div>
 <?= $this->element('public_script'); ?>
 <script>
-    $(document).ready(() => {
-        $('#example').DataTable({})
-    };
+
+    $('#example').DataTable({});
+
     const deleteArticle = (id) => {
-        fetch(`/api/article/delete/`)
-    }
+        axios.post(`/api/article/${id}/delete`)
+            .then(response => window.location = '/admin/articles')
+            .catch(err => console.log(err))
+    };
 
 </script>
 

@@ -15,7 +15,16 @@ use Cake\ORM\TableRegistry;
 class BlogController extends AppController
 {
     public function index(){
-        $this->set('articleList',TableRegistry::get('Article')->find()->toArray());
+
+        $articleTable = TableRegistry::get('Article');
+        $articleCount = $articleTable->find()->count();
+        $page = $this->request->getParam("page",1);
+        $offset = ($page - 1) * 5;
+        $hasNext = $page == 1?true:false;
+        $hasPrev = $page == 1?false:true;
+
+        $this->set("articleCount",$articleCount);
+        $this->set('articleList',$articleTable->find()->offset($offset)->limit(5)->toArray());
     }
     public function articleDetail($id){
         $this->set('data',TableRegistry::get('Article')->find()->where(['id'=>$id])->toArray()[0]);

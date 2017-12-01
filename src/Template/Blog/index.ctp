@@ -7,227 +7,123 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>BLOG index with sidebar & slider | Amaze UI Examples</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="icon" type="image/png" href="/i/favicon.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="/i/app-icon72x72@2x.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <link rel="apple-touch-icon-precomposed" href="/i/app-icon72x72@2x.png">
-    <meta name="msapplication-TileImage" content="/i/app-icon72x72@2x.png">
-    <meta name="msapplication-TileColor" content="#0e90d2">
-    <link rel="stylesheet" href="/css/amazeui.min.css">
-    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+
+    </style>
 </head>
 
-<body id="blog">
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
-    <div class="am-u-sm-8 am-u-sm-centered">
-        <img width="200" src="http://s.amazeui.org/media/i/brand/amazeui-b.png" alt="Amaze UI Logo"/>
-        <h2 class="am-hide-sm-only">中国首个开源 HTML5 跨屏前端框架</h2>
-    </div>
-</header>
-<hr>
-<!-- nav start -->
-<nav class="am-g am-g-fixed blog-fixed blog-nav">
-    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button"
-            data-am-collapse="{target: '#blog-collapse'}"><span class="am-sr-only">导航切换</span> <span
-                class="am-icon-bars"></span></button>
-
-    <div class="am-collapse am-topbar-collapse" id="blog-collapse">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li class="am-active"><a href="lw-index.html">首页</a></li>
-            <li><a href="article_detail.ctp">标准文章</a></li>
-            <li><a href="lw-img.html">图片库</a></li>
-            <li><a href="lw-timeline.html">存档</a></li>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
         </ul>
-        <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
-            <div class="am-form-group">
-                <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
-            </div>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
-<hr>
-<!-- nav end -->
-<!-- banner start -->
-<!--<div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-article-margin">
-    <div data-am-widget="slider" class="am-slider am-slider-b1" data-am-slider='{&quot;controlNav&quot;:false}'>
-        <ul class="am-slides">
-            <li>
-                <img src="/i/b1.jpg">
-                <div class="blog-slider-desc am-slider-desc ">
-                    <div class="blog-text-center blog-slider-con">
-                        <span><a href="" class="blog-color">Article &nbsp;</a></span>
-                        <h1 class="blog-h-margin"><a href="">总在思考一句积极的话</a></h1>
-                        <p>那时候刚好下着雨，柏油路面湿冷冷的，还闪烁着青、黄、红颜色的灯火。
-                        </p>
-                        <span class="blog-bor">2015/10/9</span>
-                        <br><br><br><br><br><br><br>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="/i/b2.jpg">
-                <div class="am-slider-desc blog-slider-desc">
-                    <div class="blog-text-center blog-slider-con">
-                        <span><a href="" class="blog-color">Article &nbsp;</a></span>
-                        <h1 class="blog-h-margin"><a href="">总在思考一句积极的话</a></h1>
-                        <p>那时候刚好下着雨，柏油路面湿冷冷的，还闪烁着青、黄、红颜色的灯火。
-                        </p>
-                        <span>2015/10/9</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="/i/b3.jpg">
-                <div class="am-slider-desc blog-slider-desc">
-                    <div class="blog-text-center blog-slider-con">
-                        <span><a href="" class="blog-color">Article &nbsp;</a></span>
-                        <h1 class="blog-h-margin"><a href="">总在思考一句积极的话</a></h1>
-                        <p>那时候刚好下着雨，柏油路面湿冷冷的，还闪烁着青、黄、红颜色的灯火。
-                        </p>
-                        <span>2015/10/9</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <img src="/i/b2.jpg">
-                <div class="am-slider-desc blog-slider-desc">
-                    <div class="blog-text-center blog-slider-con">
-                        <span><a href="" class="blog-color">Article &nbsp;</a></span>
-                        <h1 class="blog-h-margin"><a href="">总在思考一句积极的话</a></h1>
-                        <p>那时候刚好下着雨，柏油路面湿冷冷的，还闪烁着青、黄、红颜色的灯火。
-                        </p>
-                        <span>2015/10/9</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>-->
-<!-- banner end -->
 
-<!-- content srart -->
-<div class="am-g am-g-fixed blog-fixed">
-    <div class="am-u-md-8 am-u-sm-12">
-        <?php foreach ($articleList as $item): ?>
-            <article class="am-g blog-entry-article">
-                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                    <span><a href="" class="blog-color">article &nbsp;</a></span>
-                    <span> Allen &nbsp;</span>
-                    <span><?= $item->createAt ?></span>
-                    <h1><?= $this->Html->link(
-                            $item->title,
-                            ['controller' => 'Blog', 'action' => 'articleDetail', $item->id]
-                        );
-                        ?></h1>
-                    <p><?= $item->content ?>
-                    </p>
-                    <p><a href="" class="blog-continue">continue reading</a></p>
+<main role="main" class="container" style="margin-top: 70px">
+    <div class="row">
+
+        <div class="col-sm-8 blog-main">
+            <h3>文章区</h3>
+            <hr />
+            <?php foreach ($articleList as $article): ?>
+            <div class="card" style="width: 100%; margin-top: 16px">
+                <div class="card-body">
+                    <h4 class="card-title"><?= $article->title ?></h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
                 </div>
-            </article>
-        <?php endforeach; ?>
-
-        <ul class="am-pagination">
-            <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
-            <li class="am-pagination-next"><a href="">Next &raquo;</a></li>
-        </ul>
-    </div>
-
-    <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
-            <img src="/i/f14.jpg" alt="about me" class="blog-entry-img">
-            <p>妹纸</p>
-            <p>
-                我是妹子UI，中国首个开源 HTML5 跨屏前端框架
-            </p>
-            <p>我不想成为一个庸俗的人。十年百年后，当我们死去，质疑我们的人同样死去，后人看到的是裹足不前、原地打转的你，还是一直奔跑、走到远方的我？</p>
-        </div>
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-text-center blog-title"><span>Contact ME</span></h2>
-            <p>
-                <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
-                <a href=""><span class="am-icon-github am-icon-fw blog-icon"></span></a>
-                <a href=""><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
-                <a href=""><span class="am-icon-reddit am-icon-fw blog-icon"></span></a>
-                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
-            </p>
-        </div>
-        <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
-            <h2 class="blog-title"><span>TAG cloud</span></h2>
-            <div class="am-u-sm-12 blog-clear-padding">
-                <a href="" class="blog-tag">amaze</a>
-                <a href="" class="blog-tag">妹纸 UI</a>
-                <a href="" class="blog-tag">HTML5</a>
-                <a href="" class="blog-tag">这是标签</a>
-                <a href="" class="blog-tag">Impossible</a>
-                <a href="" class="blog-tag">开源前端框架</a>
             </div>
-        </div>
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-title"><span>么么哒</span></h2>
-            <ul class="am-list">
-                <li><a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
-                <li><a href="#">我把最深沉的秘密放在那里。</a></li>
-                <li><a href="#">你不懂我，我不怪你。</a></li>
-                <li><a href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- content end -->
+            <?php endforeach; ?>
+            <nav aria-label="Page navigation example" style="margin-top: 20px">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+            <span>共<?= $articleCount ?></span>
+        </div><!-- /.blog-main -->
 
+        <aside class="col-sm-3 ml-sm-auto blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <h4>About</h4>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
+                    fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+            <div class="sidebar-module">
+                <h4>Archives</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">March 2014</a></li>
+                    <li><a href="#">February 2014</a></li>
+                    <li><a href="#">January 2014</a></li>
+                    <li><a href="#">December 2013</a></li>
+                    <li><a href="#">November 2013</a></li>
+                    <li><a href="#">October 2013</a></li>
+                    <li><a href="#">September 2013</a></li>
+                    <li><a href="#">August 2013</a></li>
+                    <li><a href="#">July 2013</a></li>
+                    <li><a href="#">June 2013</a></li>
+                    <li><a href="#">May 2013</a></li>
+                    <li><a href="#">April 2013</a></li>
+                </ol>
+            </div>
+            <div class="sidebar-module">
+                <h4>Elsewhere</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
 
-<footer class="blog-footer">
-    <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
-        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
-            <h3>模板简介</h3>
-            <p class="am-text-sm">这是一个使用amazeUI做的简单的前端模板。<br> 博客/ 资讯类 前端模板 <br> 支持响应式，多种布局，包括主页、文章页、媒体页、分类页等<br>嗯嗯嗯，不知道说啥了。外面的世界真精彩<br><br>
-                Amaze UI 使用 MIT 许可证发布，用户可以自由使用、复制、修改、合并、出版发行、散布、再授权及贩售 Amaze UI 及其副本。</p>
-        </div>
-        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
-            <h3>社交账号</h3>
-            <p>
-                <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon blog-icon"></span></a>
-                <a href=""><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
-                <a href=""><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
-                <a href=""><span class="am-icon-reddit am-icon-fw blog-icon blog-icon"></span></a>
-                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
-            </p>
-            <h3>Credits</h3>
-            <p>我们追求卓越，然时间、经验、能力有限。Amaze UI 有很多不足的地方，希望大家包容、不吝赐教，给我们提意见、建议。感谢你们！</p>
-        </div>
-        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
-            <h1>我们站在巨人的肩膀上</h1>
-            <h3>Heroes</h3>
-            <p>
-            <ul>
-                <li>jQuery</li>
-                <li>Zepto.js</li>
-                <li>Seajs</li>
-                <li>LESS</li>
-                <li>...</li>
-            </ul>
-            </p>
-        </div>
-    </div>
-    <div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>
-</footer>
+    </div><!-- /.row -->
 
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/js/jquery.min.js"></script>
-<!--<![endif]-->
-<!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="/js/amazeui.ie8polyfill.min.js"></script>
-<![endif]-->
-<script src="/js/amazeui.min.js"></script>
+</main><!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 </body>
 </html>

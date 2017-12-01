@@ -27,7 +27,6 @@ class ArticleController extends AppController
     public function index()
     {
         $article = $this->paginate($this->Article);
-
         $this->set(compact('article'));
         $this->set('_serialize', ['article']);
     }
@@ -107,13 +106,13 @@ class ArticleController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        $id = $this->request->getParam('id');
         $article = $this->Article->get($id);
         if ($this->Article->delete($article)) {
             $this->Flash->success(__('The article has been deleted.'));
         } else {
             $this->Flash->error(__('The article could not be deleted. Please, try again.'));
         }
-
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect("/admin/articles");
     }
 }

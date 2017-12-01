@@ -62,12 +62,13 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/admin/articles/create', ['controller' => 'Main', 'action' => 'createArticle', 'article_create']);
 
     $routes->connect('/api/category/add',['controller'=>'Category','action'=>'add']);
+
     $routes->connect('/api/article/add',['controller'=>'Article','action'=>'add']);
+    $routes->connect('/api/article/:id/delete',['controller'=>'Article','action'=>'delete']);
     $routes->connect('/api/article',['controller'=>'Article']);
 
     $routes->connect('/auth',['controller'=>'Auth','action'=>'index']);
     $routes->connect('/user',['controller'=>'User','action'=>'index']);
-    $routes->connect('/api/profile',['controller'=>'Profile','action'=>'index']);
     $routes->connect('/', ['controller' => 'Blog', 'action' => 'index', 'index']);
 
     $routes->connect(

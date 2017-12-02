@@ -46,4 +46,8 @@ class LoginController extends AppController
             $this->redirect('/');
         }
     }
+    public function logout(){
+        $this->Cookie->delete("token");
+        $this->redirect("/login");
+    }
 }

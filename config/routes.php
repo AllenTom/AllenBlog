@@ -92,12 +92,18 @@ Router::defaultRouteClass(DashedRoute::class);
 //    $routes->fallbacks(DashedRoute::class);
 //});
 Router::prefix('admin', function (RouteBuilder $routers) {
-    $routers->scope('/article',function (RouteBuilder $routers){
+    $routers->scope('/article', function (RouteBuilder $routers) {
         $routers->connect("/", ['controller' => 'Article', 'action' => 'index']);
         $routers->connect("/editor", ['controller' => 'Article', 'action' => 'editor']);
+        $routers->connect("/editor/:id", ['controller' => 'Article', 'action' => 'editor']);
+        $routers->connect("/save", ['controller' => 'Article', 'action' => 'save']);
+    });
+    $routers->scope("/category", function (RouteBuilder $routers) {
+        $routers->connect("/", ['controller' => 'Category', 'action' => 'index']);
+        $routers->connect("/add", ['controller' => 'Category', 'action' => 'add']);
+        $routers->connect("/delete", ['controller' => 'Category', 'action' => 'delete']);
     });
 
-    $routers->connect("/category", ['controller' => 'Category', 'action' => 'index']);
     $routers->connect("/", ['controller' => 'DashBoard', 'action' => 'index']);
 });
 Router::scope("/", function (RouteBuilder $routers) {
@@ -105,6 +111,10 @@ Router::scope("/", function (RouteBuilder $routers) {
     $routers->scope("/login", function (RouteBuilder $routers) {
         $routers->connect("/", ['controller' => 'Login', 'action' => 'index']);
         $routers->connect("/auth", ['controller' => 'Login', 'action' => 'auth']);
+        $routers->connect("/logout", ['controller' => 'Login', 'action' => 'logout']);
+    });
+    $routers->prefix("news", function (RouteBuilder $routers) {
+        $routers->connect("/:id", ['controller' => 'ArticleDetail', 'action' => 'index']);
     });
     $routers->scope("/register", function (RouteBuilder $routers) {
         $routers->connect("/", ['controller' => 'Register', 'action' => 'index']);

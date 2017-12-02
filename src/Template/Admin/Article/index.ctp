@@ -1,5 +1,5 @@
 <?= $this->element('layout-head'); ?>
-<a href="/admin/articles/editor" class="am-btn am-btn-primary">添加文章</a>
+<a href="/admin/article/editor" class="am-btn am-btn-primary">添加文章</a>
 
 <table class="am-table am-table-striped am-table-bordered am-table-compact" id="article-table">
     <thead>
@@ -30,15 +30,9 @@
 </div>
 <?= $this->element('public_script'); ?>
 <script>
-
-    $('#example').DataTable({});
-
-    const deleteArticle = (id) => {
-        axios.post(`/api/article/${id}/delete`)
-            .then(response => window.location = '/admin/articles')
-            .catch(err => console.log(err))
-    };
-
+    $(() => {
+        $('#article-table').DataTable();
+    });
 </script>
 
 

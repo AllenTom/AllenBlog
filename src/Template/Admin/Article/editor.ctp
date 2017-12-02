@@ -50,10 +50,19 @@
 
         <div class="container-fluid am-cf"
              style="background-color: white;margin-left: 16px;margin-right: 16px;margin-top: 20px;min-height: 500px">
-            <form class="am-form" action="/api/article/add" method="post">
+            <form class="am-form" action="/admin/article/save" method="post" id="article-form">
                 <div class="am-input-group am-input-group-lg" style="margin-top: 16px">
                     <span class="am-input-group-label">标题</span>
-                    <input type="text" class="am-form-field" placeholder="输入标题" name="title" id="input-title">
+                    <input
+                            type="text"
+                            class="am-form-field"
+                            placeholder="输入标题"
+                            name="title"
+                            id="input-title"
+                        <?php if ($article != null): ?>
+                            value="<?= $article->title ?>"
+                        <?php endif; ?>
+                    >
                 </div>
                 <div class="am-form-group">
                     <label for="select-category">选择分类</label>
@@ -65,13 +74,13 @@
                     <span class="am-form-caret"></span>
                 </div>
                 <div class="am-form-group" style="margin-top: 36px">
-                    <label for="doc-ta-1">文本域</label>
+                    <label for="doc-ta-1">正文</label>
 
-                    <div id="editor" type="text/plain" style="width:1024px;height:500px;"></div>
+                    <div id="editor" type="text/plain" name="content" style="width:1024px;height:500px;"></div>
 
 
                 </div>
-                <button type="button" onclick="onArticleSubmit()" class="am-btn am-btn-primary">添加</button>
+                <button type="submit" class="am-btn am-btn-primary">添加</button>
             </form>
         </div>
     </div>
@@ -89,15 +98,9 @@
     let ue = UE.getEditor('editor');
 
     const onArticleSubmit = () => {
-        console.log(UE.getEditor('editor').getContent());
-        axios.post(
-            "/api/article/add", {
-                title: $('#input-title').val(),
-                category: $('#select-category').val(),
-                content: UE.getEditor('editor').getContent()
-            }
-        ).then(res => window.location = '/admin/category')
-            .catch(err => console.log(err))
+        const data = $('#article-form').serializeArray();
+        console.log(data);
+        $.post("/admin/article/save", data)
     }
 
 </script>

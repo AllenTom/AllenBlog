@@ -27,7 +27,7 @@
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="/admin/articles" class="<?php if ($tabIndex == 'article'):?> active <?php endif; ?>">
+            <a href="/admin/article" class="<?php if ($tabIndex == 'article'):?> active <?php endif; ?>">
                 <i class="am-icon-table sidebar-nav-link-logo"></i> 文章
             </a>
         </li>

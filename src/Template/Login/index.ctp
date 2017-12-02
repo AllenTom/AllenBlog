@@ -44,7 +44,7 @@
             </div>
 
 
-            <form class="am-form tpl-form-line-form" action="/auth/login" method="post">
+            <form class="am-form tpl-form-line-form" action="/login/auth" method="post">
                 <div class="am-form-group">
                     <input type="text" class="tpl-form-input" id="user-name" name="username" placeholder="请输入账号">
 

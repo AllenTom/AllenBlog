@@ -45,7 +45,7 @@
               </span>
 
 
-            <form class="am-form tpl-form-line-form" action="/user/add" method="post">
+            <form class="am-form tpl-form-line-form" action="/register/create" method="post">
                 <div class="am-form-group">
                     <input type="text" class="tpl-form-input" id="user-name" name="username" placeholder="用户名">
                 </div>

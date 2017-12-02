@@ -77,7 +77,7 @@
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
             </nav>
-            <span>共<?= $articleCount ?></span>
+            <span>共<?= $articleCount ?>页</span>
         </div><!-- /.blog-main -->
 
         <aside class="col-sm-3 ml-sm-auto blog-sidebar">

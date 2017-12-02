@@ -26,4 +26,14 @@ class Auth extends Entity
         'token_key' => true,
         'user' => true
     ];
+
+
+    public function createAuth(int $user)
+    {
+        $this->user = $user;
+        $this->token_key = bin2hex(random_bytes(10));
+    }
+
+
+
 }

@@ -43,60 +43,76 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope('/', function (RouteBuilder $routes) {
-    /**
-     * Here, we are connecting '/' (base path) to a controller called 'Pages',
-     * its action called 'display', and we pass a param to select the view file
-     * to use (in this case, src/Template/Pages/home.ctp)...
-     */
+//Router::scope('/', function (RouteBuilder $routes) {
+//    /**
+//     * Here, we are connecting '/' (base path) to a controller called 'Pages',
+//     * its action called 'display', and we pass a param to select the view file
+//     * to use (in this case, src/Template/Pages/home.ctp)...
+//     */
+//
+//    /**
+//     * ...and connect the rest of 'Pages' controller's URLs.
+//     */
+//    $routes->connect('/login', ['controller' => 'Login', 'action' => 'index', 'index']);
+//    $routes->connect('/sign-up', ['controller' => 'Main', 'action' => 'signUp', 'sign_up']);
+//
+//    $routes->connect('/api/category/add',['controller'=>'Category','action'=>'add']);
+//
+//    $routes->connect('/api/article/add',['controller'=>'Article','action'=>'add']);
+//    $routes->connect('/api/article/:id/delete',['controller'=>'Article','action'=>'delete']);
+//    $routes->connect('/api/article',['controller'=>'Article']);
+//
+//    $routes->connect('/auth',['controller'=>'Auth','action'=>'index']);
+//    $routes->connect('/user',['controller'=>'User','action'=>'index']);
+//    $routes->connect('/', ['controller' => 'Blog', 'action' => 'index', 'index']);
+//
+//    $routes->connect(
+//        '/articles/:id',
+//        ['controller' => 'Blog', 'action' => 'articleDetail'])
+//        ->setPatterns(['id' => '\d+'])
+//        ->setPass(['id']);
+//
+//
+//    /**
+//     * Connect catchall routes for all controllers.
+//     *
+//     * Using the argument `DashedRoute`, the `fallbacks` method is a shortcut for
+//     *    `$routes->connect('/:controller', ['action' => 'index'], ['routeClass' => 'DashedRoute']);`
+//     *    `$routes->connect('/:controller/:action/*', [], ['routeClass' => 'DashedRoute']);`
+//     *
+//     * Any route class can be used with this method, such as:
+//     * - DashedRoute
+//     * - InflectedRoute
+//     * - Route
+//     * - Or your own route class
+//     *
+//     * You can remove these routes once you've connected the
+//     * routes you want in your application.
+//     */
+//    $routes->fallbacks(DashedRoute::class);
+//});
+Router::prefix('admin', function (RouteBuilder $routers) {
+    $routers->scope('/article',function (RouteBuilder $routers){
+        $routers->connect("/", ['controller' => 'Article', 'action' => 'index']);
+        $routers->connect("/editor", ['controller' => 'Article', 'action' => 'editor']);
+    });
 
-    /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
-    $routes->connect('/admin', ['controller' => 'Main', 'action' => 'index', 'index']);
-    $routes->connect('/login', ['controller' => 'Login', 'action' => 'index', 'index']);
-    $routes->connect('/sign-up', ['controller' => 'Main', 'action' => 'signUp', 'sign_up']);
-    $routes->connect('/admin/articles', ['controller' => 'Main', 'action' => 'article', 'article']);
-    $routes->connect('/admin/category', ['controller' => 'Main', 'action' => 'category', 'category']);
-    $routes->connect('/admin/profile', ['controller' => 'Main', 'action' => 'profile', 'profile']);
-    $routes->connect('/admin/articles/create', ['controller' => 'Main', 'action' => 'createArticle', 'article_create']);
-
-    $routes->connect('/api/category/add',['controller'=>'Category','action'=>'add']);
-
-    $routes->connect('/api/article/add',['controller'=>'Article','action'=>'add']);
-    $routes->connect('/api/article/:id/delete',['controller'=>'Article','action'=>'delete']);
-    $routes->connect('/api/article',['controller'=>'Article']);
-
-    $routes->connect('/auth',['controller'=>'Auth','action'=>'index']);
-    $routes->connect('/user',['controller'=>'User','action'=>'index']);
-    $routes->connect('/', ['controller' => 'Blog', 'action' => 'index', 'index']);
-
-    $routes->connect(
-        '/articles/:id',
-        ['controller' => 'Blog', 'action' => 'articleDetail'])
-        ->setPatterns(['id' => '\d+'])
-        ->setPass(['id']);
-
-
-    /**
-     * Connect catchall routes for all controllers.
-     *
-     * Using the argument `DashedRoute`, the `fallbacks` method is a shortcut for
-     *    `$routes->connect('/:controller', ['action' => 'index'], ['routeClass' => 'DashedRoute']);`
-     *    `$routes->connect('/:controller/:action/*', [], ['routeClass' => 'DashedRoute']);`
-     *
-     * Any route class can be used with this method, such as:
-     * - DashedRoute
-     * - InflectedRoute
-     * - Route
-     * - Or your own route class
-     *
-     * You can remove these routes once you've connected the
-     * routes you want in your application.
-     */
-    $routes->fallbacks(DashedRoute::class);
+    $routers->connect("/category", ['controller' => 'Category', 'action' => 'index']);
+    $routers->connect("/", ['controller' => 'DashBoard', 'action' => 'index']);
 });
+Router::scope("/", function (RouteBuilder $routers) {
+    $routers->connect("/", ['controller' => 'Index', 'action' => 'index']);
+    $routers->scope("/login", function (RouteBuilder $routers) {
+        $routers->connect("/", ['controller' => 'Login', 'action' => 'index']);
+        $routers->connect("/auth", ['controller' => 'Login', 'action' => 'auth']);
+    });
+    $routers->scope("/register", function (RouteBuilder $routers) {
+        $routers->connect("/", ['controller' => 'Register', 'action' => 'index']);
+        $routers->connect("/create", ['controller' => 'Register', 'action' => 'create']);
+    });
 
+
+});
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.

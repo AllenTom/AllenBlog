@@ -3,6 +3,11 @@
 * text=auto
 * text eol=lf
 
+*.js linguist-language=PHP
+*.css linguist-language=PHP
+*.html linguist-language=PHP
+*.ctp linguist-language=PHP
+
 # Explicitly declare text files we want to always be normalized and converted
 # to native line endings on checkout.
 *.php text

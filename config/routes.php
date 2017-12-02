@@ -98,6 +98,7 @@ Router::prefix('admin', function (RouteBuilder $routers) {
         $routers->connect("/editor/:id", ['controller' => 'Article', 'action' => 'editor']);
         $routers->connect("/save", ['controller' => 'Article', 'action' => 'save']);
         $routers->connect("/:id", ['controller' => 'Article', 'action' => 'getContent']);
+        $routers->connect("/:id/delete", ['controller' => 'Article', 'action' => 'delete']);
     });
     $routers->scope("/category", function (RouteBuilder $routers) {
         $routers->connect("/", ['controller' => 'Category', 'action' => 'index']);

@@ -87,4 +87,13 @@ class ArticleController extends BaseAdminController
         return $this->response->withStringBody(Json::encode($article))->withType("application/json");
 
     }
+    public function delete(){
+
+        $id = $this->request->getParam("id");
+        $query = TableRegistry::get('Article')->query();
+        $query->delete()
+            ->where(['id' => $id])
+            ->execute();
+        return $this->redirect("admin/article");
+    }
 }

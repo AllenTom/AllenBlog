@@ -77,17 +77,22 @@
                     <label for="doc-ta-1">正文</label>
 
                     <div id="editor" type="text/plain" name="content" style="width:1024px;height:500px;"></div>
-
-
                 </div>
-                <button type="submit" class="am-btn am-btn-primary">添加</button>
+                <?php if ($article != null): ?>
+                    <input type="hidden" value="modify" name="articleAction">
+                    <button type="submit" class="am-btn am-btn-primary">修改</button>
+                    <input type="hidden" value="<?= $article->id ?>" name="id">
+                <?php else: ?>
+                    <input type="hidden" value="create" name="articleAction">
+                    <button type="submit" class="am-btn am-btn-primary">添加</button>
+                <?php endif; ?>
             </form>
         </div>
     </div>
 </div>
 <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.all.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>-->
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/amazeui.datatables.min.js"></script>
@@ -95,15 +100,20 @@
 <script src="https://cdn.bootcss.com/axios/0.17.1/axios.js"></script>
 <script src="/js/app.js"></script>
 <script>
-    let ue = UE.getEditor('editor');
+    const ue = UE.getEditor('editor');
+    <?php if ($article != null): ?>
+    // noinspection JSAnnotator
+    const id = <?= $article->id ?>;
+    ue.ready(() => {
+        axios
+            .get(`/admin/article/${id}`)
+            .then(resp => ue.setContent(resp.data.content))
+            .catch(err => console.log(err))
 
-    const onArticleSubmit = () => {
-        const data = $('#article-form').serializeArray();
-        console.log(data);
-        $.post("/admin/article/save", data)
-    }
-
+    });
+    <?php endif; ?>
 </script>
+
 </body>
 
 </html>
